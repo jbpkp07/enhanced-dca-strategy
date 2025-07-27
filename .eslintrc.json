@@ -1,0 +1,82 @@
+{
+    "root": true,
+    "reportUnusedDisableDirectives": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 2020,
+        "project": ["./tsconfig.json"],
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "import",
+        "jest",
+        "jsx-a11y",
+        "prettier",
+        "promise",
+        "react",
+        "react-hooks",
+        "sonarjs"
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "extends": [
+                "airbnb",
+                "airbnb/hooks",
+                "airbnb-typescript",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@typescript-eslint/recommended-requiring-type-checking"
+            ]
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["airbnb", "airbnb/hooks", "eslint:recommended"]
+        },
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "extends": [
+                "plugin:sonarjs/recommended",
+                "plugin:promise/recommended",
+                "plugin:jest/recommended",
+                "plugin:jest/style",
+                "plugin:prettier/recommended"
+            ],
+            "rules": {
+                "@typescript-eslint/ban-types": ["error", { "types": { "Function": false } }],
+                "@typescript-eslint/no-empty-function": ["warn", { "allow": ["private-constructors"] }],
+                "@typescript-eslint/no-use-before-define": [
+                    "warn",
+                    { "functions": false, "classes": true, "variables": true, "allowNamedExports": false }
+                ],
+                "class-methods-use-this": "off",
+                "import/order": [
+                    "warn",
+                    {
+                        "alphabetize": { "order": "asc", "caseInsensitive": true },
+                        "groups": [["builtin"], ["external", "internal"], ["parent", "sibling", "index"], ["type"]],
+                        "newlines-between": "always",
+                        "pathGroups": [{ "pattern": "react*", "position": "before", "group": "builtin" }],
+                        "pathGroupsExcludedImportTypes": ["react*"]
+                    }
+                ],
+                "import/prefer-default-export": "off",
+                "jest/expect-expect": ["warn", { "assertFunctionNames": ["expect*"] }],
+                "newline-before-return": "warn",
+                "no-await-in-loop": "off",
+                "no-console": "off",
+                "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+                "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"],
+                "no-underscore-dangle": ["warn", { "allowAfterThis": true, "enforceInMethodNames": true }],
+                "no-void": "off",
+                "prefer-template": "off",
+                "prettier/prettier": ["warn", {}, { "usePrettierrc": true }],
+                "sort-imports": ["warn", { "ignoreCase": true, "ignoreDeclarationSort": true }]
+            },
+            "settings": {
+                "react": { "version": "17.0.2" } // Change this to "detect" if "react" package is installed
+            }
+        }
+    ]
+}
