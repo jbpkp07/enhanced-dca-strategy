@@ -2,7 +2,7 @@
 **/node_modules/**/*
 
 # Ignore built ts files
-**/cache/**/*
+**/.cache/**/*
 **/dist/**/*
 
 # Temporary directories

@@ -17,7 +17,8 @@
         "promise",
         "react",
         "react-hooks",
-        "sonarjs"
+        "sonarjs",
+        "only-warn"
     ],
     "overrides": [
         {
